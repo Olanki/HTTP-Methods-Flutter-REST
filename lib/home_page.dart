@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http_methods/app_button.dart';
-import 'package:http_methods/base_client.dart';
-import 'package:http_methods/user.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,59 +18,28 @@ class HomePage extends StatelessWidget {
                 operation: 'GET',
                 operationColor: Colors.lightGreen,
                 description: 'Fetch users',
-                onPressed: () async {
-                  var response = await BaseClient().get('/users').catchError((err) {});
-                  if (response == null) return;
-                  debugPrint('successful:');
-
-                  var users = userFromJson(response);
-                  debugPrint('Users count: ' + users.length.toString());
+                onPressed: () {},
                 },
               ),
               AppButton(
                 operation: 'POST',
                 operationColor: Colors.lightBlue,
                 description: 'Add user',
-                onPressed: () async {
-                  var user = User(
-                    name: 'Afzal Ali',
-                    qualifications: [
-                      Qualification(degree: 'Master', completionData: '01-01-2025'),
-                    ],
-                  );
-
-                  var response = await BaseClient().post('/users', user).catchError((err) {});
-                  if (response == null) return;
-                  debugPrint('successful:');
+                onPressed: () {},
                 },
               ),
               AppButton(
                 operation: 'PUT',
                 operationColor: Colors.orangeAccent,
                 description: 'Edit user',
-                onPressed: () async {
-                  var id = 2;
-                  var user = User(
-                    name: 'Afzal Ali',
-                    qualifications: [
-                      Qualification(degree: 'Ph.D', completionData: '01-01-2028'),
-                    ],
-                  );
-
-                  var response = await BaseClient().put('/users/$id', user).catchError((err) {});
-                  if (response == null) return;
-                  debugPrint('successful:');
+                onPressed: () {},
                 },
               ),
               AppButton(
                 operation: 'DEL',
                 operationColor: Colors.red,
                 description: 'Delete user',
-                onPressed: () async {
-                  var id = 2;
-                  var response = await BaseClient().delete('/users/$id').catchError((err) {});
-                  if (response == null) return;
-                  debugPrint('successful:');
+                onPressed: () {},
                 },
               ),
             ],
